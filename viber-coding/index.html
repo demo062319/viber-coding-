@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viber Coding - 智能编程助手</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">V</div>
+                <span class="logo-text">Viber Coding</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-section="code-generation">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    代码生成
+                </button>
+                <button class="nav-item" data-section="auto-complete">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                    智能补全
+                </button>
+                <button class="nav-item" data-section="code-analysis">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                    代码分析
+                </button>
+                <button class="nav-item" data-section="settings">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    设置
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span class="status-dot online"></span>
+                    <span class="status-text">DeepSeek 已连接</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <!-- 代码生成部分 -->
+            <section class="content-section active" id="code-generation">
+                <div class="section-header">
+                    <h2>代码生成</h2>
+                    <p>使用AI生成Java或Vue代码</p>
+                </div>
+                
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="java">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0-.001-8.216 2.051-4.292 6.573M19.33 20.504s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.891 3.776-.891M17.116 17.584c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0-.001.07-.062.09-.118M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.889 4.832 0 6.836-2.274-2.053-3.943-3.858-2.824-5.539 1.644-2.469 6.197-3.665 5.189-7.627M9.734 23.924c4.322.277 10.959-.153 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0-.001.553.457 3.393.639"/>
+                        </svg>
+                        Java
+                    </button>
+                    <button class="lang-btn" data-lang="vue">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2 3h3.5L12 15l6.5-12H22L12 21 2 3zm4.5 0h3l5.5 10L21 3h3L12 24 6.5 3z"/>
+                        </svg>
+                        Vue
+                    </button>
+                </div>
+                
+                <div class="input-section">
+                    <label class="input-label">输入您的需求描述</label>
+                    <textarea 
+                        id="code-prompt" 
+                        class="prompt-textarea" 
+                        placeholder="例如：创建一个用户管理的Spring Boot控制器，包含增删改查功能..."
+                        rows="4"
+                    ></textarea>
+                    
+                    <div class="context-section">
+                        <label class="input-label">上下文代码（可选）</label>
+                        <textarea 
+                            id="code-context" 
+                            class="context-textarea" 
+                            placeholder="粘贴相关的代码上下文，以便AI更好地理解您的需求..."
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    
+                    <button id="generate-btn" class="primary-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                        生成代码
+                    </button>
+                </div>
+                
+                <div class="output-section">
+                    <div class="output-header">
+                        <span class="output-label">生成的代码</span>
+                        <button id="copy-code-btn" class="icon-btn" title="复制代码">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="code-output" class="code-output">
+                        <div class="placeholder-text">生成的代码将显示在这里...</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 智能补全部分 -->
+            <section class="content-section" id="auto-complete">
+                <div class="section-header">
+                    <h2>智能补全</h2>
+                    <p>输入代码片段，AI将智能补全后续代码</p>
+                </div>
+                
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="java">Java</button>
+                    <button class="lang-btn" data-lang="vue">Vue</button>
+                </div>
+                
+                <div class="input-section">
+                    <label class="input-label">输入您的代码片段</label>
+                    <textarea 
+                        id="autocomplete-input" 
+                        class="code-editor" 
+                        placeholder="输入部分代码，例如：
+public class UserService {
+    private UserRepository userRepository;
+    
+    public User findById(Long id) {"
+                        rows="8"
+                    ></textarea>
+                    
+                    <button id="autocomplete-btn" class="primary-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                        智能补全
+                    </button>
+                </div>
+                
+                <div class="output-section">
+                    <div class="output-header">
+                        <span class="output-label">补全结果</span>
+                        <button id="copy-autocomplete-btn" class="icon-btn" title="复制代码">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="autocomplete-output" class="code-output">
+                        <div class="placeholder-text">补全的代码将显示在这里...</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 代码分析部分 -->
+            <section class="content-section" id="code-analysis">
+                <div class="section-header">
+                    <h2>代码分析</h2>
+                    <p>分析代码质量，提供优化建议</p>
+                </div>
+                
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="java">Java</button>
+                    <button class="lang-btn" data-lang="vue">Vue</button>
+                </div>
+                
+                <div class="input-section">
+                    <label class="input-label">输入要分析的代码</label>
+                    <textarea 
+                        id="analysis-input" 
+                        class="code-editor" 
+                        placeholder="粘贴您要分析的代码..."
+                        rows="10"
+                    ></textarea>
+                    
+                    <button id="analyze-btn" class="primary-btn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        分析代码
+                    </button>
+                </div>
+                
+                <div class="output-section">
+                    <div class="output-header">
+                        <span class="output-label">分析结果</span>
+                    </div>
+                    <div id="analysis-output" class="analysis-output">
+                        <div class="placeholder-text">代码分析结果将显示在这里...</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 设置部分 -->
+            <section class="content-section" id="settings">
+                <div class="section-header">
+                    <h2>设置</h2>
+                    <p>配置API密钥和应用设置</p>
+                </div>
+                
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <label class="setting-label">DeepSeek API Key</label>
+                        <input 
+                            type="password" 
+                            id="api-key-input" 
+                            class="setting-input" 
+                            placeholder="sk-xxxxxxxxxxxx"
+                        >
+                        <p class="setting-description">您的DeepSeek API密钥，用于调用AI服务</p>
+                    </div>
+                    
+                    <button id="save-settings-btn" class="primary-btn">保存设置</button>
+                    
+                    <div class="settings-info">
+                        <h3>关于 Viber Coding</h3>
+                        <p>版本 1.0.0</p>
+                        <p>一款强大的智能编程助手，集成DeepSeek大模型，为Java和Vue开发者提供代码生成、智能补全和代码分析功能。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- 加载提示 -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">AI正在思考...</p>
+    </div>
+    
+    <script src="renderer.js"></script>
+</body>
+</html>
